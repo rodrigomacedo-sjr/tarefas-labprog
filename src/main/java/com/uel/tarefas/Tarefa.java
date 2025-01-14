@@ -8,9 +8,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "tarefas")
 public class Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +20,12 @@ public class Tarefa {
 
     @NotBlank(message = "O titulo é obrigatório")
     private String titulo;
+
     private String descricao;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.util.Date prazo;
 
-    @NotBlank(message = "Status de conclusão é obrigatório")
     private boolean concluido;
 
     public int getId() {
