@@ -1,7 +1,5 @@
-package com.gestaotarefas.repository;
+package com.uel.tarefas;
  
 import org.springframework.data.repository.CrudRepository;
-
-import com.gestaotarefas.model.Tarefa;
  
 public interface TarefaRepository extends CrudRepository<Tarefa,Integer> { }

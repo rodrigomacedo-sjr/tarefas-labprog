@@ -8,8 +8,8 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.gestaotarefas</groupId>
-	<artifactId>gestaotarefas</artifactId>
+	<groupId>com.uel</groupId>
+	<artifactId>tarefas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gestaotarefas</name>
 	<description>Prova 1, Laboratório de Programação</description>

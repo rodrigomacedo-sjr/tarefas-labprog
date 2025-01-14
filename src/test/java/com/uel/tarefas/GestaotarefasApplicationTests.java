@@ -1,4 +1,4 @@
-package com.gestaotarefas.gestaotarefas;
+package com.uel.tarefas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

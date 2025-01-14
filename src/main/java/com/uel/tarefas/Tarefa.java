@@ -1,4 +1,4 @@
-package com.gestaotarefas.model;
+package com.uel.tarefas;
 
 import java.util.Date;
 
