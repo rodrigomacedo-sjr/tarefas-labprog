@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Tarefas</title>
+   <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
 <div th:switch="${tarefas}">
  <h2 th:case="null">Ainda não há tarefas!</h2>
  <div th:case="*">
@@ -23,4 +31,5 @@
  </div>
  <p><a href="/nova-tarefa">Adicionar uma nova tarefa</a></p>
 </div>
-
+</body>
+</html>
