@@ -1,0 +1,26 @@
+<div th:switch="${tarefas}">
+ <h2 th:case="null">Ainda não há tarefas!</h2>
+ <div th:case="*">
+   <h2>Tarefas</h2>
+   <table>
+     <thead>
+     <tr>
+       <th>Título</th>
+       <th>Descrição</th>
+       <th>Prazo</th>
+       <th>Concluído</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr th:each="tarefa : ${tarefas}">
+       <td th:text="${tarefa.titulo}"></td>
+       <td th:text="${tarefa.descricao}"></td>
+       <td th:text="${#dates.format(tarefa.prazo, 'dd/MM/yyyy')}"></td>
+       <td th:text="${tarefa.concluido}"></td>
+     </tr>
+     </tbody>
+   </table>
+ </div>
+ <p><a href="/nova-tarefa">Adicionar uma nova tarefa</a></p>
+</div>
+
