@@ -103,7 +103,7 @@ public class TarefaController {
             return "/nova-tarefa";
         }
         tarefaRepository.save(tarefa);
-        return "redirect:/nova-tarefa";
+        return "redirect:/index";
     }
 
     @GetMapping("/editar/{id}")

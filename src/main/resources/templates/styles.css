@@ -1,0 +1,47 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.filter-form {
+    margin-bottom: 20px;
+}
+
+.filter-form .row > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    text-align: center;
+}
+
+.btn-custom {
+    width: 100%;
+}
+
+.footer-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.no-tasks {
+    text-align: center;
+    margin-top: 20px;
+}

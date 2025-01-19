@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR">
 <head>
-   <meta charset="UTF-8">
-   <title>Tarefas</title>
-   <link rel="stylesheet" href="styles.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div th:switch="${tarefas}">
-        <h2 th:case="null">Ainda não há tarefas!</h2>
-        <div th:case="*">
-            <h1>Tarefas</h1>
-            <h2>Filtro</h2>
-            <form th:action="@{/filtrar}" method="post">
-                <label for="status_filtro">Status:</label>
-                <select name="status_filtro" id="status_filtro">
-                    <option value="">Selecione</option>
-                    <option value="concluido">Concluído</option>
-                    <option value="pendente">Pendente</option>
-                </select>
+    <div class="container">
+        <h1>Gestão de Tarefas</h1>
 
-                <label for="prazo_filtro">Prazo:</label>
-                <input type="date" name="prazo_filtro" id="prazo_filtro">
-
-                <label for="chave_filtro">Palavra chave:</label>
-                <input type="text" name="chave_filtro" id="chave_filtro">
-
-                <input type="submit" value="Filtrar">
+        <div>
+            <form th:action="@{/filtrar}" method="post" class="filter-form">
+                <div class="row align-items-end">
+                    <div class="col-md-3">
+                        <label for="status_filtro" class="form-label">Status:</label>
+                        <select name="status_filtro" id="status_filtro" class="form-select">
+                            <option value="">Selecione</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pendente">Pendente</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="prazo_filtro" class="form-label">Prazo:</label>
+                        <input type="date" name="prazo_filtro" id="prazo_filtro" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="chave_filtro" class="form-label">Palavra-chave:</label>
+                        <input type="text" name="chave_filtro" id="chave_filtro" class="form-control">
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                    </div>
+                </div>
             </form>
-            <br/>
-            <table>
-                <thead>
+
+            <table class="table table-bordered table-striped mt-4">
+                <thead class="table-dark">
                     <tr>
-                        <th>Título</th>
-                        <th>Descrição</th>
+                        <th>Título</th>
+                        <th>Descrição</th>
                         <th>Prazo</th>
-                        <th>Concluído</th>
-                        <th>Editar</th>
-                        <th>Remover</th>
+                        <th>Concluído</th>
+                        <th colspan="2">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,14 +51,31 @@
                         <td th:text="${tarefa.titulo}"></td>
                         <td th:text="${tarefa.descricao}"></td>
                         <td th:text="${#dates.format(tarefa.prazo, 'dd/MM/yyyy')}"></td>
-                        <td th:text="${tarefa.concluido}"></td>
-                        <td><a th:href="@{/editar/{id}(id=${tarefa.id})}">Editar</a></td>
-                        <td><a th:href="@{/remover/{id}(id=${tarefa.id})}">Remover</a></td>
+                        <td>
+                            <span th:text="${tarefa.concluido ? '✅' : '❎'}"></span>
+                        </td>
+                        <td>
+                            <a th:href="@{/editar/{id}(id=${tarefa.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/remover/{id}(id=${tarefa.id})}" class="btn btn-danger btn-sm">Remover</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p><a href="/nova-tarefa">Adicionar uma nova tarefa</a></p>
+
+        <div th:if="${tarefas == null or #lists.isEmpty(tarefas)}" class="no-tasks">
+            <h2>Ainda não há tarefas!</h2>
+            <h3>Tente adicionar mais ou alterar o filtro</h3>
+        </div>
+
+        <div class="footer-link">
+            <a href="/nova-tarefa" class="btn btn-success">Adicionar uma nova tarefa</a>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
