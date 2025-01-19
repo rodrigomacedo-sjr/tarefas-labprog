@@ -55,4 +55,11 @@ public class TarefaController {
        tarefaRepository.save(tarefa);
        return "redirect:/index";
    }
+
+   @GetMapping("/remover/{id}")
+   public String removerTarefa(@PathVariable("id") int id) {
+       Tarefa tarefa = tarefaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("O id da tarefa é inválido: " + id));
+       tarefaRepository.delete(tarefa);
+       return "redirect:/index";
+   }
 }

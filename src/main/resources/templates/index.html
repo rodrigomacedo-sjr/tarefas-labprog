@@ -9,7 +9,25 @@
     <div th:switch="${tarefas}">
         <h2 th:case="null">Ainda não há tarefas!</h2>
         <div th:case="*">
-            <h2>Tarefas</h2>
+            <h1>Tarefas</h1>
+            <h2>Filtro</h2>
+            <form action="#" th:action="@{/filtrar}" method="post">
+                <label for="status_filtro">Status:</label>
+                <select name="Status" id="status_filtro">
+                    <option value="">Selecione</option>
+                    <option value="concluido">Concluído</option>
+                    <option value="pendente">Pendente</option>
+                </select>
+
+                <label for="prazo_filtro">Prazo:</label>
+                <input type="date" id="prazo_filtro">
+
+                <label for="chave_filtro">Palavra chave:</label>
+                <input type="text" id="chave_filtro">
+
+                <input type="submit" value="Filtrar"
+            </form>
+            <br/>
             <table>
                 <thead>
                     <tr>
@@ -18,6 +36,7 @@
                         <th>Prazo</th>
                         <th>Concluído</th>
                         <th>Editar</th>
+                        <th>Remover</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +46,7 @@
                         <td th:text="${#dates.format(tarefa.prazo, 'dd/MM/yyyy')}"></td>
                         <td th:text="${tarefa.concluido}"></td>
                         <td><a th:href="@{/editar/{id}(id=${tarefa.id})}">Editar</a></td>
+                        <td><a th:href="@{/remover/{id}(id=${tarefa.id})}">Remover</a></td>
                     </tr>
                 </tbody>
             </table>
