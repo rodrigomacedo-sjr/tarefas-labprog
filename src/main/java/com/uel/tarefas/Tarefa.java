@@ -24,7 +24,7 @@ public class Tarefa {
     private String descricao;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private java.util.Date prazo;
+    private Date prazo;
 
     private boolean concluido;
 

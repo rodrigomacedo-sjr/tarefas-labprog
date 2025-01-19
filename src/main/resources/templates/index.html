@@ -11,21 +11,21 @@
         <div th:case="*">
             <h1>Tarefas</h1>
             <h2>Filtro</h2>
-            <form action="#" th:action="@{/filtrar}" method="post">
+            <form th:action="@{/filtrar}" method="post">
                 <label for="status_filtro">Status:</label>
-                <select name="Status" id="status_filtro">
+                <select name="status_filtro" id="status_filtro">
                     <option value="">Selecione</option>
                     <option value="concluido">Concluído</option>
                     <option value="pendente">Pendente</option>
                 </select>
 
                 <label for="prazo_filtro">Prazo:</label>
-                <input type="date" id="prazo_filtro">
+                <input type="date" name="prazo_filtro" id="prazo_filtro">
 
                 <label for="chave_filtro">Palavra chave:</label>
-                <input type="text" id="chave_filtro">
+                <input type="text" name="chave_filtro" id="chave_filtro">
 
-                <input type="submit" value="Filtrar"
+                <input type="submit" value="Filtrar">
             </form>
             <br/>
             <table>
